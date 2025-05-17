@@ -31,7 +31,6 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print(isFunctionEnabledForGuild("randomJammyReact", message.guild.id))
     if message.author.id != config['bot_information']['user_id']:
         if isFunctionEnabledForGuild("randomJammyReact", message.guild.id):
             await randomJammyReact(message);

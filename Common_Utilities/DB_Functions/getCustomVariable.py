@@ -1,4 +1,5 @@
 import mysql.connector
+import json
 from typing import Optional, Any
 from Common_Utilities import getDBCursor  
 
@@ -28,7 +29,7 @@ def getCustomVariable(
         cursor.execute(query, (guild_id, var_name))
         result = cursor.fetchone()
         if result:
-            return result[0]  # JSON is already parsed
+            return json.loads(result[0])  # JSON is already parsed
         return None
     finally:
         cursor.close()
