@@ -1,7 +1,3 @@
-# Local SQL
-
-All files added to the local folder will be kept on your local instance. It's a good idea to keep any sensitive data you'd like to add here. 
-
 # Repo SQL
 
 All files added to the repo folder will be kept in git and pushed to the repo if you so choose.
