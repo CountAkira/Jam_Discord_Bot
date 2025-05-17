@@ -1,0 +1,14 @@
+YOU WILL NEED TO RENAME THIS TO JUST config.json AND ADD YOUR TOKEN, DB NAME, AND DB PASSWORD IF YOU WANT IT TO WORK. ITS NAMED THIS SO THAT GIT DOESNT TRACK IT.
+
+{
+    "discord": {
+        "botToken": "your bot token"
+    },
+    "mySql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "your password",
+        "database": "your database"
+    }
+}
+  
