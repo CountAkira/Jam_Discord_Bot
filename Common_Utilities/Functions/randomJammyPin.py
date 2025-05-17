@@ -1,7 +1,10 @@
 import discord
+from Config.config import config
 
 async def randomJammyPin(message):
     randomPin = random.randint(0, 70000)
+
+    setCustomVariable(connection, guild_id, var_name, var_value)
     
     global pincount
     

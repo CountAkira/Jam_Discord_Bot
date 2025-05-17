@@ -3,6 +3,7 @@ import json
 
 from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
+from Config.config import config
 
 from Common_Utilities import randomJammyPin, randomJammyReact
 from Common_Utilities import getGuildListForFunction, isFunctionEnabledForGuild
@@ -13,15 +14,11 @@ intents.message_content = True
 bot = discord.Client(intents=intents)
 tree = discord.app_commands.CommandTree(bot)
 
-# Load config
-with open('Config/config.json', 'r') as file:
-    config = json.load(file)
-
 # Initialize database and run SQL scripts
 mydb, mycursor = initialize_database(config)
 
 # Register all commands with the prefix register_ in the features folder
-load_all_commands(tree, mycursor)
+load_all_commands(tree)
 
 # Initial function that runs after bot.run(token)
 @bot.event
@@ -34,10 +31,11 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    print(isFunctionEnabledForGuild("randomJammyReact", message.guild.id))
     if message.author.id != config['bot_information']['user_id']:
-        if isFunctionEnabledForGuild(mycursor, "randomJammyReact", message.guild.id):
+        if isFunctionEnabledForGuild("randomJammyReact", message.guild.id):
             await randomJammyReact(message);
-        if isFunctionEnabledForGuild(mycursor, "randomJammyPin", message.guild.id):
+        if isFunctionEnabledForGuild("randomJammyPin", message.guild.id):
             await randomJammyPin(message);
 
 # Start bot
