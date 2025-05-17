@@ -1,16 +1,17 @@
 import discord
 import json
-from discord import app_commands
+
 from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
 
-from Common_Utilities.Functions import randomJammyPin, randomJammyReact
+from Common_Utilities import randomJammyPin, randomJammyReact
+from Common_Utilities import grabGuildListForFunction
 
 # Set up discord py basic settings
 intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Client(intents=intents)
-tree = app_commands.CommandTree(bot)
+tree = discord.app_commands.CommandTree(bot)
 
 # Load config
 with open('Config/config.json', 'r') as file:
@@ -33,13 +34,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print("test1")
-    print(message.author.id)
-    print(config['bot_information']['user_id'])
     if message.author.id != config['bot_information']['user_id']:
-        print("test2")
+        print(grabGuildListForFunction(mycursor, "randomJammyPin"))
         #await randomJammyReact(message);
         #await randomJammyPin(message);
 
-# Start bot (must be last)
+# Start bot
 bot.run(config['discord']['botToken'])

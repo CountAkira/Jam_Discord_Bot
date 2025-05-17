@@ -9,7 +9,7 @@ C:\Users\Akira\Desktop\Jam Chan\Jam 2.0\DB_Scripts\Repo\Data\001_Guild_Enabled_F
 
 Make sure to change the function name to whatever function you are adding so that it can be loaded from this function below. 
 
-from Common_Utilities.DB_Functions.grabGuildListForFunction import grabGuildListForFunction
+from Common_Utilities import grabGuildListForFunction
 
 def register_example_command(tree: app_commands.CommandTree, mycursor):
     @tree.command(
