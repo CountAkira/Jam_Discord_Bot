@@ -39,3 +39,7 @@ Add any functions you would like to have in your server here. Just add your guil
 # 002_Scheduled_Events_Data.sql
 
 Add any scheduled events you would like to have in your server here. You will need to make an individual entry for every event and guild combo. All timestamps are in utc.
+
+# 003_Custom_Variables_Table_Create
+
+Takes in a guild_id and var_name which then outputs a var_value. 

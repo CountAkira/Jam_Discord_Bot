@@ -1,5 +1,6 @@
-from .DB_Functions.grabGuildListForFunction import grabGuildListForFunction
-from .DB_Functions.grabScheduledEvents import grabScheduledEvents
+from .DB_Functions.getGuildListForFunction import getGuildListForFunction
+from .DB_Functions.getScheduledEvents import getScheduledEvents
+from .DB_Functions.isFunctionEnabledForGuild import isFunctionEnabledForGuild
 
 from .Functions.randomJammyPin import randomJammyPin
 from .Functions.randomJammyReact import randomJammyReact

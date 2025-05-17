@@ -5,7 +5,7 @@ from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
 
 from Common_Utilities import randomJammyPin, randomJammyReact
-from Common_Utilities import grabGuildListForFunction
+from Common_Utilities import getGuildListForFunction, isFunctionEnabledForGuild
 
 # Set up discord py basic settings
 intents = discord.Intents.default()
@@ -35,9 +35,10 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     if message.author.id != config['bot_information']['user_id']:
-        print(grabGuildListForFunction(mycursor, "randomJammyPin"))
-        #await randomJammyReact(message);
-        #await randomJammyPin(message);
+        if isFunctionEnabledForGuild(mycursor, "randomJammyReact", message.guild.id):
+            await randomJammyReact(message);
+        if isFunctionEnabledForGuild(mycursor, "randomJammyPin", message.guild.id):
+            await randomJammyPin(message);
 
 # Start bot
 bot.run(config['discord']['botToken'])

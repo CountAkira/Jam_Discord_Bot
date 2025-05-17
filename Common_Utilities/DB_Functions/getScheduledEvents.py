@@ -2,7 +2,7 @@ import mysql.connector
 from typing import List, Dict, Any
 from datetime import datetime, timedelta
 
-def grabScheduledEvents(
+def getScheduledEvents(
     cursor: mysql.connector.cursor.MySQLCursor,
     db_connection: mysql.connector.connection.MySQLConnection
 ) -> List[Dict[str, Any]]:

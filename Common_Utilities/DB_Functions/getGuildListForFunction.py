@@ -2,7 +2,7 @@ import mysql.connector
 from typing import List
 import discord 
 
-def grabGuildListForFunction(cursor: mysql.connector.cursor.MySQLCursor, function_name: str) -> List[discord.Object]:
+def getGuildListForFunction(cursor: mysql.connector.cursor.MySQLCursor, function_name: str) -> List[discord.Object]:
     """
     Retrieves the list of guilds associated with a given function_name
     from the guild_enabled_functions table, and returns them as discord.Object instances.

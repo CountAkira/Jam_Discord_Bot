@@ -9,13 +9,13 @@ C:\Users\Akira\Desktop\Jam Chan\Jam 2.0\DB_Scripts\Repo\Data\001_Guild_Enabled_F
 
 Make sure to change the function name to whatever function you are adding so that it can be loaded from this function below. 
 
-from Common_Utilities import grabGuildListForFunction
+from Common_Utilities import getGuildListForFunction
 
 def register_example_command(tree: app_commands.CommandTree, mycursor):
     @tree.command(
         name="example",
         description="My first application Command",
-        guilds=grabGuildListForFunction(mycursor, "example")
+        guilds=getGuildListForFunction(mycursor, "example")
     )
     async def example(interaction: discord.Interaction):
         await interaction.response.send_message("Helloooo!")
@@ -23,4 +23,5 @@ def register_example_command(tree: app_commands.CommandTree, mycursor):
 --------------------------------------------------------------------------------------------------------------
 Put any functions associated with these commands into a functions utilities folder
 
-For example say you have a function that sends a message in a particular format but have two commands related to that, say you want to get information for an actor or a movie. You could have a command for each and then in the functi
+For example say you have a function that sends a message in a particular format but have two commands related to that, say you want to get information for an actor or a movie. You could have a command for each and then in the function
+
