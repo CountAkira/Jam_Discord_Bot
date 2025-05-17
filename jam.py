@@ -4,6 +4,8 @@ from discord import app_commands
 from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
 
+from Common_Utilities.Functions import randomJammyPin, randomJammyReact
+
 # Set up discord py basic settings
 intents = discord.Intents.default()
 intents.message_content = True
@@ -28,6 +30,16 @@ async def on_ready():
     #await tree.sync(guild=discord.Object(id=896438391040770068))
     await tree.sync()
     print(f'{bot.user} has connected to Discord.')
+
+@bot.event
+async def on_message(message):
+    print("test1")
+    print(message.author.id)
+    print(config['bot_information']['user_id'])
+    if message.author.id != config['bot_information']['user_id']:
+        print("test2")
+        #await randomJammyReact(message);
+        #await randomJammyPin(message);
 
 # Start bot (must be last)
 bot.run(config['discord']['botToken'])

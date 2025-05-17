@@ -1,14 +1,23 @@
-YOU WILL NEED TO RENAME THIS TO JUST config.json AND ADD YOUR TOKEN, DB NAME, AND DB PASSWORD IF YOU WANT IT TO WORK. ITS NAMED THIS SO THAT GIT DOESNT TRACK IT.
+Fill in your info and remove this top text. Resave this file as config.json.
 
 {
-    "discord": {
-        "botToken": "your bot token"
-    },
     "mySql": {
         "host": "localhost",
         "user": "root",
-        "password": "your password",
-        "database": "your database"
+        "password": "(Required Fill In) your db password",
+        "database": "(Required Fill In) your db name"
+    },
+    "discord": {
+        "botToken": "(Required Fill In) your discord bot token"
+    },
+    "bot_information": {
+        "user_id": (Required Fill In) turn on discord dev settings so you can copy the bot user id in your server by right clicking on the bot user. This also must be in number format without quotes.
+    },
+    "TMDB":{
+        "token": "(Optional Fill In) themoviedb.org api token"
+    },
+    "OMDB":{
+        "token": "(Optional Fill In) omdbapi.com api token"
     }
 }
   

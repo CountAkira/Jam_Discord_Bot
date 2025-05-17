@@ -35,3 +35,11 @@ ON DUPLICATE KEY UPDATE
 001_create_users_table.sql
 002_create_roles_table.sql
 010_seed_default_users.sql
+
+# 001_Guild_Enabled_Functions_Data.sql
+
+Add any functions you would like to have in your server here. Just add your guild to the existing lists.
+
+# 002_Scheduled_Events_Data.sql
+
+Add any scheduled events you would like to have in your server here. You will need to make an individual entry for every event and guild combo. All timestamps are in utc.

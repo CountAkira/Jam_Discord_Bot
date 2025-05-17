@@ -50,9 +50,7 @@ def initialize_database(config):
     # Run any scripts in the DB_Scripts folder
     folders_to_run = [
         os.path.join(scripts_base_path, "Repo", "Schema"),
-        os.path.join(scripts_base_path, "Local", "Schema"),
         os.path.join(scripts_base_path, "Repo", "Data"),
-        os.path.join(scripts_base_path, "Local", "Data"),
     ]
 
     for folder in folders_to_run:

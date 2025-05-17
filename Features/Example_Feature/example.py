@@ -1,6 +1,6 @@
 import discord
 from discord import app_commands
-from Common_Utilities.DB_Functions.grabGuildListForFunction import grabGuildListForFunction
+from Common_Utilities.DB_Functions import grabGuildListForFunction
 
 def register_example_command(tree: app_commands.CommandTree, mycursor):
     @tree.command(
