@@ -6,16 +6,16 @@ from Common_Utilities import setCustomVariable, getCustomVariable
 
 async def randomJammyPin(message):
     randomPin = random.randint(0, 70000)
-    pinCount = getCustomVariable(message.guild.id, "pinCount")
+    randomJammyPinCount = getCustomVariable(message.guild.id, "randomJammyPinCount")
 
-    if(pinCount is None):  
-        setCustomVariable(message.guild.id, "pinCount", {"count": 0})
-        pinCount = {"count": 0}
+    if(randomJammyPinCount is None):  
+        setCustomVariable(message.guild.id, "randomJammyPinCount", {"count": 0})
+        randomJammyPinCount = {"count": 0}
     
-    setCustomVariable(message.guild.id, "pinCount", {"count": pinCount["count"] + 1})
+    setCustomVariable(message.guild.id, "randomJammyPinCount", {"count": randomJammyPinCount["count"] + 1})
 
-    if(randomPin == 1 or pinCount["count"] > 70000):
-        setCustomVariable(message.guild.id, "pinCount", {"count": 0})
+    if(randomPin == 1 or randomJammyPinCount["count"] > 70000):
+        setCustomVariable(message.guild.id, "randomJammyPinCount", {"count": 0})
         await message.add_reaction('📌')
         
         # Get bot nickname or fallback to username

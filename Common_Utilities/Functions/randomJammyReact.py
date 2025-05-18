@@ -5,16 +5,16 @@ from Common_Utilities import setCustomVariable, getCustomVariable
 async def randomJammyReact(message):
     randomNumberReact = random.randint(0, 1000)
 
-    reactCount = getCustomVariable(message.guild.id, "reactCount")
+    randomJammyReactCount = getCustomVariable(message.guild.id, "randomJammyReactCount")
 
-    if(reactCount is None):  
-        setCustomVariable(message.guild.id, "reactCount", {"count": 0})
-        reactCount = {"count": 0}
+    if(randomJammyReactCount is None):  
+        setCustomVariable(message.guild.id, "randomJammyReactCount", {"count": 0})
+        randomJammyReactCount = {"count": 0}
     
-    setCustomVariable(message.guild.id, "reactCount", {"count": reactCount["count"] + 1})
+    setCustomVariable(message.guild.id, "randomJammyReactCount", {"count": randomJammyReactCount["count"] + 1})
     
-    if(randomNumberReact == 1 or reactCount["count"] > 1000):
-        setCustomVariable(message.guild.id, "reactCount", {"count": 0})
+    if(randomNumberReact == 1 or randomJammyReactCount["count"] > 1000):
+        setCustomVariable(message.guild.id, "randomJammyReactCount", {"count": 0})
 
         emotes = getCustomVariable(message.guild.id, "customReactEmotes")
 
