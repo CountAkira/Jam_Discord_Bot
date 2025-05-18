@@ -1,11 +1,13 @@
 import discord
 from discord import app_commands
 import aiohttp
+from Common_Utilities import getGuildListForFunction
 
 def register_set_bot_identity_command(tree: app_commands.CommandTree):
     @tree.command(
         name="set_bot_identity",
-        description="Set the bot's nickname, avatar (via URL), and color role in this guild."
+        description="Set the bot's nickname, avatar (via URL), and color role in this guild.",
+        guilds=getGuildListForFunction("set_bot_identity")
     )
     @app_commands.describe(
         nickname="New nickname for the bot in this guild (optional)",

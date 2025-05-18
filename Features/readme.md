@@ -5,7 +5,7 @@ C:\Users\Akira\Desktop\Jam Chan\Jam 2.0\Features\Example_Feature\example.py
 --------------------------------------------------------------------------------------------------------------
 You will also need to add this function to the following sql file along with the guilds you want to add this functionality to. This acts as a feature toggle for your server. So if you want only some of the functionality you can do that. Any functionality should be added with the idea that it will be off by default until added. 
 
-C:\Users\Akira\Desktop\Jam Chan\Jam 2.0\DB_Scripts\Repo\Data\001_Guild_Enabled_Functions_Data.sql
+C:\Users\Akira\Desktop\Jam Chan\Jam 2.0\DB_Scripts\Repo\Data\001_Guild_Enabled_Functions_By_Guild_Data.sql
 
 Make sure to change the function name to whatever function you are adding so that it can be loaded from this function below. 
 

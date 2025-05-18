@@ -3,7 +3,7 @@ from Common_Utilities import getDBCursor
 def isFunctionEnabledForGuild(function_name: str, guild_id: int) -> bool:
     """
     Checks if a given guild_id is associated with the specified function_name
-    in the guild_enabled_functions table.
+    in the guild_enabled_functions_by_guild table.
 
     Args:
         function_name (str): The function name to look up.
@@ -18,7 +18,7 @@ def isFunctionEnabledForGuild(function_name: str, guild_id: int) -> bool:
     try:
         query = """
             SELECT guilds
-            FROM guild_enabled_functions
+            FROM guild_enabled_functions_by_guild
             WHERE function_name = %s
             LIMIT 1;
         """

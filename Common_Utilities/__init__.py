@@ -8,5 +8,8 @@ from .DB_Functions.getScheduledEvents import getScheduledEvents
 from .DB_Functions.getCustomVariable import getCustomVariable
 from .DB_Functions.setCustomVariable import setCustomVariable
 
+from .DB_Functions.getAuthorizationByGuildAndFunctionName import getAuthorizationByGuildAndFunctionName 
+
 from .Functions.randomJammyPin import randomJammyPin
 from .Functions.randomJammyReact import randomJammyReact
+from .Functions.authorize import authorize

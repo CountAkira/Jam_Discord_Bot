@@ -19,9 +19,9 @@ WHERE NOT EXISTS (
     SELECT name FROM roles WHERE name = 'admin'
 ) LIMIT 1;
 
-- For any scripts that require updates like `001_Guild_Enabled_Functions_Data.sql` make sure to use `ON DUPLICATE KEY UPDATE`. You can also choose to simply make a new script with an update if it is something not updated often. 
+- For any scripts that require updates like `001_Guild_Enabled_Functions_By_Guild_Data.sql` make sure to use `ON DUPLICATE KEY UPDATE`. You can also choose to simply make a new script with an update if it is something not updated often. 
 
-INSERT INTO guild_enabled_functions (guilds, function_name)
+INSERT INTO guild_enabled_functions_by_guild (guilds, function_name)
 VALUES ('846475513983926273,896438391040770068', 'example')
 ON DUPLICATE KEY UPDATE
   guilds = VALUES(guilds);

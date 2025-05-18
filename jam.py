@@ -5,14 +5,18 @@ from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
 from Config.config import config
 
-from Common_Utilities import randomJammyPin, randomJammyReact
-from Common_Utilities import getGuildListForFunction, isFunctionEnabledForGuild
+from Common_Utilities import randomJammyPin, randomJammyReact, isFunctionEnabledForGuild, authorize
 
-# Set up discord py basic settings
+# Custom CommandTree to hook into slash command execution
+class MyCommandTree(discord.app_commands.CommandTree):
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        return await authorize(interaction, interaction.command.name)
+
+# Set up discord basic client
 intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Client(intents=intents)
-tree = discord.app_commands.CommandTree(bot)
+tree = MyCommandTree(bot)
 
 # Initialize database and run SQL scripts
 mydb, mycursor = initialize_database(config)
@@ -28,6 +32,15 @@ async def on_ready():
     #await tree.sync(guild=discord.Object(id=896438391040770068))
     await tree.sync()
     print(f'{bot.user} has connected to Discord.')
+
+# Global check for application commands
+@bot.event
+async def global_command_check(ctx):
+    if isinstance(ctx, discord.ApplicationContext):
+        # Run your code before all slash commands here
+        print(f"User {ctx.user} invoked {ctx.command.name}")
+        # Add more logic as needed
+    return True  # Returning False blocks the command
 
 @bot.event
 async def on_message(message):
