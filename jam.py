@@ -29,7 +29,7 @@ load_all_commands(tree)
 async def on_ready():
     #uncomment this await tree sync with your guild number and comment out await tree.sync() if you want to update any slash commands you just made
     #otherwise it will take an hour for discord to update normally
-    #await tree.sync(guild=discord.Object(id=896438391040770068))
+    #await tree.sync(guild=discord.Object(id=846475513983926273))
     await tree.sync()
     print(f'{bot.user} has connected to Discord.')
 

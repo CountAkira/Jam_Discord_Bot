@@ -8,7 +8,7 @@ ON DUPLICATE KEY UPDATE
   roles = VALUES(roles);
 
 
--- Adds set bot identity authorization only for king kaiju role
+-- Adds example authorization that has no authorization, it should default to no auth but perhaps you want this empty for some reason to add to later
 INSERT INTO guild_enabled_functions_by_role (guild, function_name, roles)
 VALUES ('896438391040770068', 'example', '')
 ON DUPLICATE KEY UPDATE

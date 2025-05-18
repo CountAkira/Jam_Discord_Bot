@@ -3,7 +3,7 @@ from Common_Utilities import getDBCursor
 def isFunctionEnabledForGuild(function_name: str, guild_id: int) -> bool:
     """
     Checks if a given guild_id is associated with the specified function_name
-    in the guild_enabled_functions_by_guild table.
+    in the guild_enabled_functions_by_guild table and is enabled.
 
     Args:
         function_name (str): The function name to look up.
@@ -12,24 +12,19 @@ def isFunctionEnabledForGuild(function_name: str, guild_id: int) -> bool:
     Returns:
         bool: True if the guild_id is enabled for the function_name, False otherwise.
     """
-
     connection, cursor = getDBCursor()
 
     try:
         query = """
-            SELECT guilds
+            SELECT 1
             FROM guild_enabled_functions_by_guild
-            WHERE function_name = %s
+            WHERE function_name = %s AND guild_id = %s AND is_enabled = TRUE
             LIMIT 1;
         """
-        cursor.execute(query, (function_name,))
-        result = cursor.fetchone()
 
-        if result and result[0]:
-            guild_ids = result[0].split(',')
-            return str(guild_id) in [gid.strip() for gid in guild_ids if gid.strip().isdigit()]
-        else:
-            return False
+        cursor.execute(query, (function_name, str(guild_id)))
+        result = cursor.fetchone()
+        return result is not None
 
     finally:
         cursor.close()

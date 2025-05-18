@@ -6,7 +6,9 @@ from Common_Utilities import getDBCursor
 def getGuildListForFunction(function_name: str) -> List[discord.Object]:
     """
     Retrieves the list of guilds associated with a given function_name
-    from the guild_enabled_functions_by_guild table, and returns them as discord.Object instances.
+    from the guild_enabled_functions_by_guild table, where is_enabled is True.
+    
+    Returns them as discord.Object instances.
 
     Args:
         function_name (str): The function name to look up.
@@ -18,19 +20,13 @@ def getGuildListForFunction(function_name: str) -> List[discord.Object]:
 
     try:
         query = """
-            SELECT guilds
+            SELECT guild_id
             FROM guild_enabled_functions_by_guild
-            WHERE function_name = %s
-            LIMIT 1;
+            WHERE function_name = %s AND is_enabled = TRUE;
         """
         cursor.execute(query, (function_name,))
-        result = cursor.fetchone()
-
-        if result and result[0]:
-            guild_ids = result[0].split(',')
-            return [discord.Object(id=int(gid.strip())) for gid in guild_ids if gid.strip().isdigit()]
-        else:
-            return []
+        results = cursor.fetchall()
+        return [discord.Object(id=int(row[0])) for row in results]
 
     finally:
         cursor.close()
