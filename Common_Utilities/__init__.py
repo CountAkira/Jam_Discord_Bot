@@ -4,12 +4,14 @@ from .DB_Functions.getGuildListForFunction import getGuildListForFunction
 from .DB_Functions.isFunctionEnabledForGuild import isFunctionEnabledForGuild
 
 from .DB_Functions.getScheduledEvents import getScheduledEvents
+from .DB_Functions.updateAllScheduledEventsToToday import updateAllScheduledEventsToToday
 
 from .DB_Functions.getCustomVariable import getCustomVariable
 from .DB_Functions.setCustomVariable import setCustomVariable
 
 from .DB_Functions.getAuthorizationByGuildAndFunctionName import getAuthorizationByGuildAndFunctionName 
 
-from .Functions.randomJammyPin import randomJammyPin
-from .Functions.randomJammyReact import randomJammyReact
-from .Functions.authorize import authorize
+from .Functions.Random_Jammy.randomJammyPin import randomJammyPin
+from .Functions.Random_Jammy.randomJammyReact import randomJammyReact
+from .Functions.Authorization.authorize import authorize
+from .Functions.Scheduled_Event_Checker.scheduledEventChecker import scheduledEventChecker
