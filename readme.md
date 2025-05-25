@@ -13,6 +13,6 @@ python -m pip install mysql-connector-python
 
 You will need to go here and set up a bot and get your token https://discord.com/developers/docs/quick-start/getting-started
 
-Add your config information to Config\config_example.txt and rename the file to config.json. 
+Add your config information to Config\serverConfig_example.txt and rename the file to serverConfig.json. 
 
 Run the bot by doing py jam.py in the top directory
