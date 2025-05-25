@@ -11,6 +11,7 @@ async def scheduledEventChecker(bot):
     for event in events:
         event_name = event["event_name"]
         config = event.get("config", {})
+        guild_id = event.get("guild_id", {})
 
         try:
             # Use cached module if available, else import and cache it
@@ -24,7 +25,7 @@ async def scheduledEventChecker(bot):
             event_func = getattr(module, event_name)
 
             # Call the function
-            await event_func(bot, config)
+            await event_func(bot, config, guild_id)
 
         except ModuleNotFoundError:
             print(f"[WARN] No module found for event: {event_name}")

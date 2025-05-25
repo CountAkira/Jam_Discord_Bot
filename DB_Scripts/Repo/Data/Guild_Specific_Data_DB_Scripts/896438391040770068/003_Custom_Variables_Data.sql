@@ -14,3 +14,16 @@ VALUES (
 )
 ON DUPLICATE KEY UPDATE
     var_value = VALUES(var_value);
+
+-- Fumo daily upload configuration
+INSERT INTO custom_variables (guild_id, var_name, var_value)
+VALUES (
+    896438391040770068,
+    'fumoDailyChannel',
+    JSON_OBJECT(
+        'channel', '896438391766413385',
+        'emote', '<a:cirBoogie:1376073733449711686>'
+    )
+)
+ON DUPLICATE KEY UPDATE
+    var_value = VALUES(var_value);
