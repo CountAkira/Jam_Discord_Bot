@@ -1,4 +1,4 @@
-Fill in your info and remove this top text. Resave this file as config.json.
+Fill in your info and remove this top text. Resave this file as serverConfig.json.
 
 {
     "mySql": {
@@ -18,6 +18,9 @@ Fill in your info and remove this top text. Resave this file as config.json.
     },
     "OMDB":{
         "token": "(Optional Fill In) omdbapi.com api token"
+    },
+    "YOUTUBE":{
+        "token": "(Optional Fill In) youtube api token"
     }
 }
   

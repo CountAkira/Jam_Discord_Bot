@@ -1,5 +1,5 @@
 importantInfo.txt
 DB_Scripts/Local/
-Config/config.json
+Config/serverConfig.json
 
 *.pyc

@@ -1,7 +1,5 @@
-import discord
 import random
 
-from Config.config import config
 from Common_Utilities import setCustomVariable, getCustomVariable
 
 async def randomJammyPin(message):

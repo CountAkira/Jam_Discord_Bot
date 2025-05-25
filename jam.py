@@ -4,7 +4,7 @@ import asyncio
 from DB_Scripts.dbSetup import initialize_database
 from Features.commandLoader import load_all_commands
 
-from Config.config import config
+from Config.serverConfig import serverConfig
 
 from Common_Utilities import randomJammyPin, randomJammyReact, isFunctionEnabledForGuild, authorize, scheduledEventChecker, updateAllScheduledEventsToToday
 
@@ -20,7 +20,7 @@ bot = discord.Client(intents=intents)
 tree = MyCommandTree(bot)
 
 # Initialize database and run SQL scripts
-mydb, mycursor = initialize_database(config)
+mydb, mycursor = initialize_database(serverConfig)
 
 # Register all commands with the prefix register_ in the features folder
 load_all_commands(tree)
@@ -49,7 +49,7 @@ async def global_command_check(ctx):
 
 @bot.event
 async def on_message(message):
-    if message.author.id != config['bot_information']['user_id']:
+    if message.author.id != serverConfig['bot_information']['user_id']:
         if isFunctionEnabledForGuild("randomJammyReact", message.guild.id):
             await randomJammyReact(message);
         if isFunctionEnabledForGuild("randomJammyPin", message.guild.id):
@@ -72,4 +72,4 @@ async def on_ready():
     bot.loop.create_task(scheduled_events_polling())
 
 # Start bot
-bot.run(config['discord']['botToken'])
+bot.run(serverConfig['discord']['botToken'])
